@@ -1,25 +1,71 @@
-import logo from './logo.svg';
+import React, {Component} from "react";
 import './App.css';
+import Result from './logicFile/ScreenCompo'
+import Keyboard from "./logicFile/ButtonsCompo";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+    
+    constructor(){
+        super();
+
+
+        this.state = {
+            result: ""
+        }
+    }
+
+    onClick = button => {
+
+        if(button === "="){
+            this.equal()
+        }
+        
+        else if(button === "C"){
+            this.clear()
+        }
+
+        else if(button === "DL"){
+            this.delete()
+        }
+
+        else {
+            this.setState({result: this.state.result + button})
+        }
+    };
+
+    equal = () => {
+
+        try {
+            this.setState({
+                // eslint-disable-next-line
+                result: (eval(this.state.result) || "") + ""})
+
+        } catch (e) {
+            this.setState({result: "ERROR! :("})
+        }
+
+    };
+
+    clear = () => {
+        this.setState({result: ""})
+    };
+
+    delete = () => {
+        this.setState({result: this.state.result.slice(0, -1)})
+    };
+
+
+    render() {
+        return(
+            <div>
+                <div className="body"> 
+                <Result result={this.state.result} />
+                <Keyboard onClick={this.onClick} />
+                </div>
+            </div>
+        );
+    }
 }
 
 export default App;
