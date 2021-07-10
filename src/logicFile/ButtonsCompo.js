@@ -21,13 +21,14 @@ class Keyboard extends Component {
                 <button name="9" onClick={e => this.props.onClick(e.target.name)}>9</button>
                 <button name="+" onClick={e => this.props.onClick(e.target.name)}>+</button><br />
 
-                <button name="=" onClick={e => this.props.onClick(e.target.name)}>=</button>
-                <button name="0" onClick={e => this.props.onClick(e.target.name)}>0</button>
                 <button name="." onClick={e => this.props.onClick(e.target.name)}>.</button>
+                <button name="0" onClick={e => this.props.onClick(e.target.name)}>0</button>
+                <button name="=" onClick={e => this.props.onClick(e.target.name)}>=</button>
                 <button name="-" onClick={e => this.props.onClick(e.target.name)}>-</button><br />
 
                 <button name="DL" onClick={e => this.props.onClick(e.target.name)}>DL</button>
-                <button name="C" onClick={e => this.props.onClick(e.target.name)}>C</button><br />
+                <button name="C" onClick={e => this.props.onClick(e.target.name)}>C</button>
+                <br />
             </div>
         );
     }
